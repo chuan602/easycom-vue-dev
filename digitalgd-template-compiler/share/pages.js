@@ -356,7 +356,7 @@ function getAutoComponentsByDir (componentsPath, absolute = false) {
 }
 
 function initAutoImportScanComponents () {
-  const componentsPath = path.resolve(process.env.UNI_INPUT_DIR, 'components')
+  const componentsPath = path.resolve(process.cwd(), 'src/components')
 
   const components = getAutoComponentsByDir(componentsPath)
 
@@ -374,16 +374,6 @@ function initAutoImportComponents (easycom = {}) {
   let usingAutoImportComponents = easycom.custom || easycom || {}
   if (!isPlainObject(usingAutoImportComponents)) {
     usingAutoImportComponents = {}
-  }
-  // 目前仅 mp-weixin 内置支持 page-meta 等组件
-  if (process.env.UNI_PLATFORM !== 'mp-weixin') {
-    BUILT_IN_COMPONENTS.forEach(name => {
-      const easycomName = `^${name}$`
-      if (!usingAutoImportComponents[easycomName]) {
-        usingAutoImportComponents[easycomName] =
-          '@dcloudio/uni-cli-shared/components/' + name + '.vue'
-      }
-    })
   }
 
   const newUsingAutoImportComponentsJson = JSON.stringify(usingAutoImportComponents)

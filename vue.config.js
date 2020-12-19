@@ -1,4 +1,5 @@
 const compiler = require('./digitalgd-template-compiler')
+const WebpackDigitalgdInvalid = require('./digitalgd-easycom-plugin/lib/index');
 
 module.exports = {
   chainWebpack: config => {
@@ -10,5 +11,8 @@ module.exports = {
             compiler,
           })
         })
+    config
+      .plugin('webpack-digitalgd-invalid')
+      .use(WebpackDigitalgdInvalid)
   }
 }

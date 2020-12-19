@@ -179,7 +179,7 @@ function hasOwn (obj, key) {
   return Object.prototype.hasOwnProperty.call(obj, key)
 }
 
-const tags = require('@dcloudio/uni-cli-shared/lib/tags')
+const tags = require('../share/tags')
 
 function isComponent (tagName) {
   if (
